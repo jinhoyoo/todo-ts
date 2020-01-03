@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TodoTemplate from './components/TodoTemplate';
+import TodoInsert from './components/TodoInsert';
+
+function createBulkTodos() {
+  const array = []
+  for ( let i=1; i<=2500; i++){
+    array.push(
+      {
+        id: i,
+        text: `Todo ${i}`,
+        checked: false
+      }
+    );
+  }
+  return array;
+}
+
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TodoTemplate>
+      <TodoInsert/>
+     {/* 
+      <TodoList 
+        todos={todos}
+        onRemove={onRemove} 
+        onToggle={onToggle}/> */}
+    </TodoTemplate>
   );
 }
 
