@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
+import TodoList from './components/TodoList';
 
 function createBulkTodos() {
   const array = []
@@ -21,11 +22,7 @@ const App: React.FC = () => {
   return (
     <TodoTemplate>
       <TodoInsert/>
-     {/* 
-      <TodoList 
-        todos={todos}
-        onRemove={onRemove} 
-        onToggle={onToggle}/> */}
+      <TodoList/>
     </TodoTemplate>
   );
 }

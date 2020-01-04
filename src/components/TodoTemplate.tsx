@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, {ReactNode} from 'react';
 import './TodoTemplate.scss';
 
-  export interface ITodoTemplateProps {
-    children?: string | string[] 
-  }
+export interface ITodoTemplateProps {
+    children: ReactNode 
+}
 
 export default function TodoTemplate (props :ITodoTemplateProps) {
   return (
@@ -13,5 +13,4 @@ export default function TodoTemplate (props :ITodoTemplateProps) {
     </div>
   );
 }
-
 
