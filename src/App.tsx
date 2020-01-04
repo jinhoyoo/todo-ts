@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useRef, useCallback} from 'react';
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
@@ -18,8 +18,6 @@ function createBulkTodos() {
   }
   return array;
 }
-
-
 
 type Action =
   | { type: 'INSERT'; todo: Todo }
@@ -44,10 +42,24 @@ function todoReducer(todos:Todo[], action:Action) {
 
 const App: React.FC = () => {
   const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos)
+  const nextId = useRef(0);
 
+  const OnInsert = useCallback( (text:string) => {
+      const todo = {
+        id: nextId.current,
+        text: text,
+        checked: false,
+      };
+      dispatch( {type:'INSERT', todo} );
+      nextId.current += 1;
+    },
+    [],
+  );
+
+ 
   return (
     <TodoTemplate>
-      <TodoInsert/>
+      <TodoInsert onInsert={OnInsert}/>
       <TodoList/>
     </TodoTemplate>
   );
