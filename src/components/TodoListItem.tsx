@@ -14,7 +14,7 @@ export interface ITodoListItemProps {
     onRemove: (id:number) => void; 
 }
 
-export default function TodoListItem (props: ITodoListItemProps) {
+function TodoListItem (props: ITodoListItemProps) {
 
     const {id, text, checked} = props.todo;
 
@@ -32,3 +32,5 @@ export default function TodoListItem (props: ITodoListItemProps) {
         </div>
     );
     }
+
+export default React.memo(TodoListItem);

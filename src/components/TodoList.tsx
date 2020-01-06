@@ -10,7 +10,7 @@ export interface ITodoListProps {
     onToggle: (id:number) => void; 
 }
 
-export default function TodoList (props: ITodoListProps) {
+function TodoList (props: ITodoListProps) {
   return (
     <div className ="TodoList">
         {props.todos.map( 
@@ -26,3 +26,6 @@ export default function TodoList (props: ITodoListProps) {
     </div>
   );
 }
+
+
+export default React.memo(TodoList)
