@@ -9,7 +9,9 @@ import './TodoListItem.scss';
 import {Todo} from './Entity';
 
 export interface ITodoListItemProps {
-    todo: Todo
+    todo: Todo;
+    onToggle: (id:number) => void;
+    onRemove: (id:number) => void; 
 }
 
 export default function TodoListItem (props: ITodoListItemProps) {
@@ -18,11 +20,13 @@ export default function TodoListItem (props: ITodoListItemProps) {
 
     return (
         <div className="TodoListItem">
-            <div className={cn('checkbox', {checked}) }>
+            <div className={cn('checkbox', {checked}) }
+                onClick={() => props.onToggle(id) } >
                 {checked? <MdCheckBox/> : <MdCheckBoxOutlineBlank/>}
                 <div className="text">{text}</div>
             </div>
-            <div className="remove">
+            <div className="remove"
+            onClick={() => props.onRemove(id) } >
                 <MdRemoveCircleOutline/>
             </div>
         </div>

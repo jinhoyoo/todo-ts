@@ -55,13 +55,23 @@ const App: React.FC = () => {
     },
     [],
   );
-
+  
+  const onToggle = useCallback( (id:number) => {
+    dispatch( {type:'TOGGLE', id} );
+  }, [] );
  
+  const onRemove = useCallback( (id:number) => {
+      dispatch( {type:'REMOVE', id} );
+    },[] );
+
+
   return (
     <TodoTemplate>
       <TodoInsert onInsert={OnInsert}/>
       <TodoList
         todos={todos}
+        onRemove={onRemove}
+        onToggle={onToggle}
       />
     </TodoTemplate>
   );
