@@ -2,7 +2,7 @@ import React, {useReducer, useRef, useCallback} from 'react';
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
-import {Todo} from './Entity';
+import {Todo} from './components/Entity';
 
 
 function createBulkTodos() {
@@ -60,7 +60,9 @@ const App: React.FC = () => {
   return (
     <TodoTemplate>
       <TodoInsert onInsert={OnInsert}/>
-      <TodoList/>
+      <TodoList
+        todos={todos}
+      />
     </TodoTemplate>
   );
 }
