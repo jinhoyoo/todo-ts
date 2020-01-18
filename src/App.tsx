@@ -8,13 +8,12 @@ import {Todo} from './components/Entity';
 function createBulkTodos() {
   const array = []
   for ( let i=1; i<=2500; i++){
-    array.push(
-      { 
-        id: i, 
-        text: `Todo ${i}`, 
-        checked: false
-      }
-    );
+    const t : Todo = {
+      id: i, 
+      text: `Todo ${i}`, 
+      checked: false
+    }
+    array.push(t);
   }
   return array;
 }
@@ -45,7 +44,7 @@ const App: React.FC = () => {
   const nextId = useRef(0);
 
   const OnInsert = useCallback( (text:string) => {
-      const todo = {
+      const todo:Todo = {
         id: nextId.current,
         text: text,
         checked: false,
